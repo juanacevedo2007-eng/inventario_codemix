@@ -1,0 +1,34 @@
+services:
+ db:
+   container_name: mysql_contenedor
+   image: mysql:latest
+   ports: 
+    - "3307:3306"
+   environment:
+    - MYSQL_ROOT_PASSWORD=1234
+   networks:
+    - red_inventario
+   volumes:
+    - mysql_data_inventario:/var/lib/mysql
+
+ phpmyadmin:
+   image: phpmyadmin:latest
+   container_name: phpmyadmin
+   environment:
+    - PMA_HOST=db
+   ports:
+    - "8081:80"
+   networks:
+    - red_inventario
+
+
+volumes:
+  mysql_data_inventario:
+networks:
+  red_inventario:
+   driver: bridge
+
+
+
+   
+
