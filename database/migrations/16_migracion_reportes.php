@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reportes', function (Blueprint $table) {
-            $table->id(id_reporte);
+            $table->id('id_reporte');
             $table->string('tipo_reporte', 100);
             $table->enum('formato', ['pdf', 'excel']);
             $table->dateTime('fecha_descarga')->nullable();

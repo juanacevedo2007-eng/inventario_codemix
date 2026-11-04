@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nit',30)->nullable();
             $table->string('direccion', 225);
             $table->string('telefono', 20)->nullable();
-            $table->email('email', 100)->nullable();
+            $table->string('email', 100)->nullable();
             $table->string('pagina_web', 100)->nullable();
             $table->string('moneda', 20)->default('COP');
             $table->string('zona_horaria', 50)->default('America/Bogota');

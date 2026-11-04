@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('movimientos_stock', function (Blueprint $table) {
-            $table->id(id_movimiento_stock);
-            $table->unsignedBigInteger(id_producto);
-            $table->unsignedBigInteger(id_usuario);
-            $table->unsignedBigInteger(id_proveedor);
-            $table->unsignedBigInteger(id_compra);
-            $table->unsignedBigInteger(id_venta);
+            $table->id('id_movimiento_stock');
+            $table->unsignedBigInteger('id_producto');
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_proveedor');
+            $table->unsignedBigInteger('id_compra');
+            $table->unsignedBigInteger('id_venta');
             $table->enum('tipo_movimiento', ['Entrada', 'Salida', 'Ajuste']);
             $table->unsignedInteger('cantidad');
             $table->string('stock_antes', 100);

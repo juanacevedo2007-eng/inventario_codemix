@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->id(id_compra);
+            $table->id('id_compra');
             $table->decimal('total', 12, 2)->default(0);
             $table->enum('estado',['Pendiente','Recibido','Anulada'])->default('Pendiente');
             $table->unsignedBigInteger('id_proveedor');

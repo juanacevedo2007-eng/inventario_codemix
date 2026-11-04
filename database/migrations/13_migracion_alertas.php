@@ -10,11 +10,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('alertas', function (Blueprint $table){
-            $table->id(id_alerta);
+            $table->id('id_alerta');
             $table->unsignedBigInteger('id_producto');
             $table->enum('tipo_alerta', ['Bajo Stock', 'Agotado', 'Proximo Vencimiento']);
             $table->string('mensaje', 255);
-            $table->enum('estado', ['Pendiente', 'Leida', 'Atendida'])->default(pendiente);
+            $table->enum('estado', ['Pendiente', 'Leida', 'Atendida'])->default('Pendiente');
 
             $table->timestamps();
             $table->softDeletes();
