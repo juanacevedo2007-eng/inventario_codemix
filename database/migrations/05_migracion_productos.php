@@ -26,8 +26,8 @@ return new class extends Migration
         $table->timestamps();
         $table->softDeletes();
 
-        $table->foreign('id_categoria')->references('id_categoria')->on('categorias')->onDelete('cascade');
-        $table->foreign('id_proveedor')->references('id_proveedor')->on('proveedores')->onDelete('cascade');
+        $table->foreign('id_categoria')->references('id_categoria')->on('categorias')->onDelete('restrict');
+        $table->foreign('id_proveedor')->references('id_proveedor')->on('proveedores')->onDelete('restrict');
 
         });
     }

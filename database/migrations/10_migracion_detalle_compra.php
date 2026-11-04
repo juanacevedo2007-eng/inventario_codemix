@@ -21,8 +21,8 @@ return new class extends Migration
          $table->timestamps();
          $table->softDeletes();
 
-         $table->foreign('id_compra')->references('id_compra')->on('compras')->onDelete('cascade');
-         $table->foreign('id_producto')->references('id_producto')->on('productos')->onDelete('cascade');
+         $table->foreign('id_compra')->references('id_compra')->on('compras')->onDelete('restrict');
+         $table->foreign('id_producto')->references('id_producto')->on('productos')->onDelete('restrict');
          });
     }
 
