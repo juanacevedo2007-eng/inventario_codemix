@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-       Schema::create('usuarios', function (Blueprint $table) {
+       Schema::create('usuarios', function (Blueprint $table){
             $table->id('id_usuario');
             $table->string('nombre');
             $table->string('email', 225)->unique();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id_rol')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('id_rol')->references('id_rol')->on('roles')->onDelete('cascade');
 
         });
     }
