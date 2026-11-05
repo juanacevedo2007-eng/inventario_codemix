@@ -6,7 +6,7 @@ interface CompraInterface extends BaseInterface
 {
   public function findById(int $id_compra);
 
-  public function findByDecimal(float $decimal);
+  public function findByTotal(float $total);
 
   public function findByEstado(string $estado);
 
