@@ -2,13 +2,97 @@
 
 namespace App\Services;
 
+use App\Interfaces\RolInterface;
+use Illuminate\Validation\ValidationException;
+
 class RolService
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
+    protected RolInterface $rolRepository;
+
+    public function __construct(RolInterface $rolRepository)
     {
-        //
+        $this->rolRepository = $rolRepository;
+    }
+
+    public function getAll()
+    {
+        return $this->rolRepository->getAll();
+    }
+
+    public function getById(int $id)
+    {
+        $rol = $this->rolRepository->findById($id);
+
+        if (!$rol) {
+            throw ValidationException::withMessages([
+                'rol' => 'El rol no existe.'
+            ]);
+        }
+
+        return $rol;
+    }
+
+    public function create(array $data)
+    {
+        $this->validarDatosRol($data);
+        $this->validarNombreUnico($data['nombre_rol']);
+
+        return $this->rolRepository->create($data);
+    }
+
+    public function update(int $id, array $data)
+    {
+        $this->getById($id);
+        $this->validarDatosRol($data);
+
+        if (isset($data['nombre_rol'])) {
+            $this->validarNombreUnico($data['nombre_rol'], $id);
+        }
+
+        return $this->rolRepository->update($id, $data);
+    }
+
+    public function delete(int $id)
+    {
+        $this->getById($id);
+
+        return $this->rolRepository->delete($id);
+    }
+
+    public function findByNombreRol(string $nombreRol)
+    {
+        return $this->rolRepository->findByNombreRol($nombreRol);
+    }
+
+    public function findByDescripcionRol(string $descripcion)
+    {
+        return $this->rolRepository->findByDescripcionRol($descripcion);
+    }
+
+    private function validarDatosRol(array $data): void
+    {
+        if (isset($data['nombre_rol']) &&
+            trim($data['nombre_rol']) === '') {
+
+            throw ValidationException::withMessages([
+                'nombre_rol' => 'El nombre del rol no puede estar vacio.'
+            ]);
+        }
+    }
+
+    private function validarNombreUnico(
+        string $nombreRol,
+        ?int $idExcluir = null
+    ): void {
+        $roles = $this->rolRepository->findByNombreRol($nombreRol);
+
+        foreach ($roles as $rol) {
+            if ($rol->id_rol != $idExcluir) {
+                throw ValidationException::withMessages([
+                    'nombre_rol' => 'Ya existe un rol con ese nombre.'
+                ]);
+            }
+        }
     }
 }
+

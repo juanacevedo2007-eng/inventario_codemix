@@ -2,222 +2,116 @@
 
 namespace App\Services;
 
-use App\Interfaces\ProductoInterface;
-use App\Interfaces\CategoriaInterface;
-use App\Interfaces\ProveedorInterface;
+use App\Interfaces\NotificacionInterface;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
-class ProductoService
+class NotificacionService
 {
-    protected ProductoInterface $productoRepository;
-    protected CategoriaInterface $categoriaRepository;
-    protected ProveedorInterface $proveedorRepository;
+    protected NotificacionInterface $notificacionRepository;
 
-    public function __construct(
-        ProductoInterface $productoRepository,
-        CategoriaInterface $categoriaRepository,
-        ProveedorInterface $proveedorRepository
-    ) {
-        $this->productoRepository = $productoRepository;
-        $this->categoriaRepository = $categoriaRepository;
-        $this->proveedorRepository = $proveedorRepository;
+    public function __construct(NotificacionInterface $notificacionRepository)
+    {
+        $this->notificacionRepository = $notificacionRepository;
     }
 
-    // Listar todos los productos
     public function getAll()
     {
-        return $this->productoRepository->getAll();
+        return $this->notificacionRepository->getAll();
     }
 
-    // Buscar un producto por su ID
     public function getById(int $id)
     {
-        $producto = $this->productoRepository->findById($id);
+        $notificacion = $this->notificacionRepository->findById($id);
 
-        if (!$producto) {
+        if (!$notificacion) {
             throw ValidationException::withMessages([
-                'producto' => 'El producto no existe.'
+                'notificacion' => 'La notificacion no existe.'
             ]);
         }
 
-        return $producto;
+        return $notificacion;
     }
 
-    // Registrar un producto
     public function create(array $data)
     {
-        $this->validarDatosProducto($data);
-        $this->validarCodigoUnico($data['codigo']);
+        $this->validarDatosNotificacion($data);
 
-        return $this->productoRepository->create($data);
+        return $this->notificacionRepository->create($data);
     }
 
-    // Actualizar un producto
     public function update(int $id, array $data)
     {
         $this->getById($id);
+        $this->validarDatosNotificacion($data);
 
-        $this->validarDatosProducto($data);
-
-        if (isset($data['codigo'])) {
-            $this->validarCodigoUnico($data['codigo'], $id);
-        }
-
-        return $this->productoRepository->update($id, $data);
+        return $this->notificacionRepository->update($id, $data);
     }
 
-    // Eliminar un producto
     public function delete(int $id)
     {
         $this->getById($id);
 
-        return $this->productoRepository->delete($id);
+        return $this->notificacionRepository->delete($id);
     }
 
-    // Buscar por código
-    public function findByCodigo(string $codigo)
+    public function findByIdUsuario(int $id_usuario)
     {
-        return $this->productoRepository->findByCodigo($codigo);
+        return $this->notificacionRepository->findByIdUsuario($id_usuario);
     }
 
-    // Buscar por nombre
-    public function findByNombre(string $nombre)
+    public function findByTitulo(string $titulo)
     {
-        return $this->productoRepository->findByNombre($nombre);
+        return $this->notificacionRepository->findByTitulo($titulo);
     }
 
-    // Buscar por descripción
-    public function findByDescripcion(string $descripcion)
+    public function findByMensaje(string $mensaje)
     {
-        return $this->productoRepository->findByDescripcion($descripcion);
+        return $this->notificacionRepository->findByMensaje($mensaje);
     }
 
-    // Buscar por marca
-    public function findByMarca(string $marca)
+    public function findByLeido(bool $leido)
     {
-        return $this->productoRepository->findByMarca($marca);
+        return $this->notificacionRepository->findByLeido($leido);
     }
 
-    // Buscar por precio de compra
-    public function findByPrecioCompra(float $precioCompra)
+    public function findByIdProducto(int $id_producto)
     {
-        return $this->productoRepository->findByPrecioCompra($precioCompra);
+        return $this->notificacionRepository->findByIdProducto($id_producto);
     }
 
-    // Buscar por precio de venta
-    public function findByPrecioVenta(float $precioVenta)
+    public function findByFecha(Carbon $fecha)
     {
-        return $this->productoRepository->findByPrecioVenta($precioVenta);
+        return $this->notificacionRepository->findByFecha($fecha);
     }
 
-    // Buscar por stock actual
-    public function findByStockActual(int $stockActual)
+    public function findByTipoAlerta(string $tipo_alerta)
     {
-        return $this->productoRepository->findByStockActual($stockActual);
+        return $this->notificacionRepository->findByTipoAlerta($tipo_alerta);
     }
 
-    // Buscar por stock mínimo
-    public function findByStockMinimo(int $stockMinimo)
+    private function validarDatosNotificacion(array $data): void
     {
-        return $this->productoRepository->findByStockMinimo($stockMinimo);
-    }
-
-    // Buscar por fecha de vencimiento
-    public function findByFechaVencimiento(Carbon $fechaVencimiento)
-    {
-        return $this->productoRepository->findByFechaVencimiento(
-            $fechaVencimiento
-        );
-    }
-
-    // Buscar por estado
-    public function findByEstado(string $estado)
-    {
-        return $this->productoRepository->findByEstado($estado);
-    }
-
-    // Buscar por categoría
-    public function findByCategoria(int $id_categoria)
-    {
-        return $this->productoRepository->findByCategoria($id_categoria);
-    }
-
-    // Buscar por proveedor
-    public function findByProveedor(int $id_proveedor)
-    {
-        return $this->productoRepository->findByProveedor($id_proveedor);
-    }
-
-    // Validar los datos del producto
-    private function validarDatosProducto(array $data): void
-    {
-        if (isset($data['precio_compra']) &&
-            (!is_numeric($data['precio_compra']) || $data['precio_compra'] < 0)) {
-            throw ValidationException::withMessages([
-                'precio_compra' => 'El precio de compra no puede ser negativo.'
-            ]);
-        }
-
-        if (isset($data['precio_venta']) &&
-            (!is_numeric($data['precio_venta']) || $data['precio_venta'] < 0)) {
-            throw ValidationException::withMessages([
-                'precio_venta' => 'El precio de venta no puede ser negativo.'
-            ]);
-        }
-
-        foreach (['stock_actual', 'stock_minimo'] as $campo) {
-            if (isset($data[$campo]) &&
-                (!filter_var($data[$campo], FILTER_VALIDATE_INT) ||
-                $data[$campo] < 0)) {
+        foreach (['titulo', 'mensaje'] as $campo) {
+            if (isset($data[$campo]) && trim($data[$campo]) === '') {
                 throw ValidationException::withMessages([
-                    $campo => 'La cantidad debe ser un número entero igual o mayor que cero.'
+                    $campo => 'El campo no puede estar vacio.'
                 ]);
             }
         }
 
-        if (isset($data['estado']) &&
-            !in_array($data['estado'], ['Activo', 'Inactivo'], true)) {
+        if (isset($data['leido']) && !is_bool($data['leido'])) {
             throw ValidationException::withMessages([
-                'estado' => 'El estado debe ser Activo o Inactivo.'
+                'leido' => 'El campo leido debe ser verdadero o falso.'
             ]);
         }
 
-        if (isset($data['id_categoria']) &&
-            !$this->categoriaRepository->getById((int) $data['id_categoria'])) {
-            throw ValidationException::withMessages([
-                'id_categoria' => 'La categoría seleccionada no existe.'
-            ]);
-        }
-
-        if (isset($data['id_proveedor']) &&
-            !$this->proveedorRepository->getById((int) $data['id_proveedor'])) {
-            throw ValidationException::withMessages([
-                'id_proveedor' => 'El proveedor seleccionado no existe.'
-            ]);
-        }
-
-        if (isset($data['fecha_vencimiento']) &&
-            $data['fecha_vencimiento'] !== null) {
+        if (isset($data['fecha'])) {
             try {
-                Carbon::parse($data['fecha_vencimiento']);
+                Carbon::parse($data['fecha']);
             } catch (\Exception $e) {
                 throw ValidationException::withMessages([
-                    'fecha_vencimiento' => 'La fecha de vencimiento no es válida.'
-                ]);
-            }
-        }
-    }
-
-    // Comprobar que el código no esté repetido
-    private function validarCodigoUnico(string $codigo, ?int $idExcluir = null): void
-    {
-        $productos = $this->productoRepository->findByCodigo($codigo);
-
-        foreach ($productos as $producto) {
-            if ($producto->id_producto != $idExcluir) {
-                throw ValidationException::withMessages([
-                    'codigo' => 'Ya existe un producto registrado con ese código.'
+                    'fecha' => 'La fecha no es valida.'
                 ]);
             }
         }
