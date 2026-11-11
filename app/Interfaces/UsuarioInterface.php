@@ -14,5 +14,7 @@ interface UsuarioInterface extends BaseInterface
 
     public function findByEstado(string $estado);
     
+    public function findByIntentos(int $intentos);
+    
     public function findByRol(int $id_rol);
 }

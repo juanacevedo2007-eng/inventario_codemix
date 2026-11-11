@@ -16,7 +16,9 @@ class Usuario extends Model
     'email',
     'password',
     'estado',
+    'intentos',
     'id_rol'
+    
   ];
 
   public function rol()

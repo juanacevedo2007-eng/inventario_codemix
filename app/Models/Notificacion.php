@@ -13,14 +13,20 @@ class Notificacion extends Model
     protected $primaryKey = 'id_notificacion';
     protected $fillable = [
         'id_usuario',
+        'id_producto',
         'titulo',
         'mensaje',
         'leida',
-        'fecha'
+        'fecha',
+        'tipo_alerta'
     ];
 
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'id_usuario');
     }   
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'id_producto');
+    }
 }

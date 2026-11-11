@@ -11,7 +11,7 @@ class NotificacionRepository extends BaseRepository implements NotificacionInter
         parent::__construct($notificacion);
     }
 
-    public function findById(int $id_notificacion)
+    public function findByIdNotificacion(int $id_notificacion)
     {
         return $this->model->find($id_notificacion);
     }
@@ -35,4 +35,23 @@ class NotificacionRepository extends BaseRepository implements NotificacionInter
     {
         return $this->model->where('leido', $leido)->get();
     }
-}
+
+    public function findByIdproducto(int $id_producto)
+    {
+         return $this->model->where('id_producto',$id_producto)->get();
+    }
+    
+    public function findByFecha(Carbon $fecha)
+    {
+        return $this->model->where('fecha', $fecha)->get();
+    }
+
+
+    public function findByTipoAlerta(string $tipo_alerta)
+    {
+        return $this->model->where('tipo_alerta',$tipo_alerta)->get();
+    }
+
+
+
+    }

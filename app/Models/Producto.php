@@ -55,4 +55,9 @@ class Producto extends Model
     {
         return $this->hasMany(MovimientoStock::class, 'id_movimiento_stock');
     }
+
+    public function Notificacion()
+    {
+        return $this->hasMany(Notificacion::class, 'id_notificacion');
+    }
 }

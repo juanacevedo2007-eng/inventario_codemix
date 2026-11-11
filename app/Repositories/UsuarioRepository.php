@@ -32,9 +32,16 @@ class UsuarioRepository extends BaseRepository implements UsuarioInterface {
     {
         return $this->model->where('estado', $estado)->get();
     }
+
+    public function findByIntentos(int $intentos)
+    {
+        return $this->model->where('intentos', $intentos)->get();
+    }
     
     public function findByRol(int $id_rol)
     {
         return $this->model->where('id_rol', $id_rol)->get();
     }
+
+    
 }
