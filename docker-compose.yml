@@ -1,4 +1,27 @@
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codemix_app_container
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_KEY: ${APP_KEY:-}
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: codemix
+      DB_USERNAME: postgres
+      DB_PASSWORD: "1234"
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - red_api
+
   db:
     image: postgres:15-alpine
     container_name: codemix_postgres_container
@@ -12,6 +35,11 @@ services:
       - red_api
     volumes:
       - pgdata_camuad:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d codemix"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
  
 
   pgadmin:
