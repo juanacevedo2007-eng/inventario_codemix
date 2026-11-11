@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories;
 use App\Models\Venta;
-use App\Interfaces\Ventainterface;
+use App\Interfaces\VentaInterface;
 
 class VentaRepository extends BaseRepository implements VentaInterface
 {

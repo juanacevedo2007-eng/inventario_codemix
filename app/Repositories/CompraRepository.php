@@ -11,7 +11,7 @@ class CompraRepository extends BaseRepository implements CompraInterface
         parent::__construct($compra);
     }
     public function findById(int $id_compra){
-        return $this->model->find(id_compra);
+        return $this->model->find($id_compra);
     }
 
     public function findByTotal(float $total){

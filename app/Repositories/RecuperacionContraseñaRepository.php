@@ -2,6 +2,7 @@
 namespace App\Repositories;
 use App\Models\RecuperacionContraseña;
 use App\Interfaces\RecuperacionContraseñaInterface;
+use Carbon\Carbon;
 
 class RecuperacionContraseñaRepository extends BaseRepository implements RecuperacionContraseñaInterface
 {

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 use App\Models\Proveedor;
-use App\interfaces\ProveedorInterface;
+use App\Interfaces\ProveedorInterface;
 
 class ProveedorRepository extends BaseRepository implements ProveedorInterface
 {
