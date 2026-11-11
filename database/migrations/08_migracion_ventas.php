@@ -24,7 +24,7 @@ return new class extends Migration
          $table->timestamps();
          $table->softDeletes();
 
-         $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->omitOnDelete('restrict'); 
+         $table->foreign('id_usuario')->references('id_usuario')->on('usuarios')->OnDelete('restrict'); 
         });
     }
     /**

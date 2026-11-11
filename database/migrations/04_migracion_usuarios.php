@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('email', 225)->unique();
             $table->string('password');
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
+            $table->integer('intentos')->default(0);
             $table->unsignedBigInteger('id_rol');
 
 
