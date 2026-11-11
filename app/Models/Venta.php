@@ -12,8 +12,7 @@ class Venta extends Model
     protected $table = 'ventas';
     protected $primaryKey = 'id_venta';
     protected $fillable = [
-        'numero_factura',
-        'fecha',
+        'nombre_factura',
         'descuento',
         'iva',
         'total',
@@ -27,11 +26,11 @@ class Venta extends Model
     }
     public function detalleVenta()
     {
-        return $this->hasMany(DetalleVenta::class, 'id_detalle_venta');
+        return $this->hasMany(DetalleVenta::class, 'id_venta');
     }
     public function movimientoStock()
     {
-        return $this->hasMany(MovimientoStock::class, 'id_movimiento_stock');
+        return $this->hasMany(MovimientoStock::class, 'id_venta');
     }
 
 }

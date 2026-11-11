@@ -21,14 +21,14 @@ class Proveedor extends Model
     ];
     public function compras()
     {
-        return $this->hasMany(Compra::class, 'id_compra');
+        return $this->hasMany(Compra::class, 'id_proveedor');
     }
     public function productos()
     {
-        return $this->hasMany(Producto::class, 'id_producto');
+        return $this->hasMany(Producto::class, 'id_proveedor');
     }
     public function movimientoStock()
     {
-        return $this->hasMany(MovimientoStock::class, 'id_movimiento_stock');
+        return $this->hasMany(MovimientoStock::class, 'id_proveedor');
     }
 }

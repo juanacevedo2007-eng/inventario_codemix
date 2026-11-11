@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\softDeletes;
 class DetalleVenta extends Model
 {
     use HasFactory, softDeletes;
-    protected $table = "detalle_venta";
+    protected $table = "detalles_venta";
     protected $primaryKey = 'id_detalle_venta';
     protected $fillable = [
         'id_venta',

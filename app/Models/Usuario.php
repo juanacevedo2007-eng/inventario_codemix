@@ -31,26 +31,26 @@ class Usuario extends Model
   }  
   public function compra ()
   {
-    return $this->hasMany(Compra::class, 'id_compra');
+    return $this->hasMany(Compra::class, 'id_usuario');
   }
   public function venta ()
   {
-    return $this->hasMany(Venta::class, 'id_venta');
+    return $this->hasMany(Venta::class, 'id_usuario');
   }
   public function movimientoStock ()
   {
-    return $this->hasMany(MovimientoStock::class, 'id_movimiento_stock');
+    return $this->hasMany(MovimientoStock::class, 'id_usuario');
   }
   public function notificacion ()
   {
-    return $this->hasMany(Notificacion::class, 'id_notificacion');
+    return $this->hasMany(Notificacion::class, 'id_usuario');
   }
   public function recuperacionContraseña ()
   {    
-  return $this->hasMany(RecuperacionContraseña::class, 'id_recuperacion_contraseña');
+  return $this->hasMany(RecuperacionContraseña::class, 'id_usuario');
   }
   public function reporte ()
   {
-    return $this->hasMany(Reporte::class, 'id_reporte');
+    return $this->hasMany(Reporte::class, 'id_usuario');
   }
 }

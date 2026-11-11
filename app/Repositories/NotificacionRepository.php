@@ -3,6 +3,7 @@
 namespace App\Repositories;
 use App\Interfaces\NotificacionInterface;
 use App\Models\Notificacion;
+use Carbon\Carbon;
 
 class NotificacionRepository extends BaseRepository implements NotificacionInterface
 {
@@ -11,7 +12,7 @@ class NotificacionRepository extends BaseRepository implements NotificacionInter
         parent::__construct($notificacion);
     }
 
-    public function findByIdNotificacion(int $id_notificacion)
+    public function findById(int $id_notificacion)
     {
         return $this->model->find($id_notificacion);
     }
@@ -36,7 +37,7 @@ class NotificacionRepository extends BaseRepository implements NotificacionInter
         return $this->model->where('leido', $leido)->get();
     }
 
-    public function findByIdproducto(int $id_producto)
+    public function findByIdProducto(int $id_producto)
     {
          return $this->model->where('id_producto',$id_producto)->get();
     }

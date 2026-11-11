@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories;
-use app\models\Categoria;
+use App\Models\Categoria;
 use App\Interfaces\CategoriaInterface;
 
 class CategoriaRepository extends BaseRepository implements CategoriaInterface

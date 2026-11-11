@@ -2,6 +2,7 @@
 namespace App\Repositories;
 use App\Models\Producto;
 use App\Interfaces\ProductoInterface;
+use Carbon\Carbon;
 
 class ProductoRepository extends BaseRepository implements ProductoInterface
 {

@@ -8,7 +8,7 @@ interface UsuarioInterface extends BaseInterface
 
     Public function findByNombre(string $nombre);
 
-    Public function findByCorreo(string $correo);
+    Public function findByEmail(string $correo);
 
     public function findByPassword(string $password);
 

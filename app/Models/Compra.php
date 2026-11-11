@@ -13,7 +13,6 @@ class Compra extends Model
     protected $table = 'compras';
     protected $primaryKey = 'id_compra';
     protected $fillable = [
-        'fecha',
         'total',
         'estado',
         'id_usuario',
@@ -29,11 +28,11 @@ class Compra extends Model
         }
     public function detalleCompra()
         {
-            return $this->hasMany(DetalleCompra::class, 'id_detalle_compra');
+            return $this->hasMany(DetalleCompra::class, 'id_compra');
         }
     public function movimientoStock()
         {
-            return $this->hasMany(MovimientoStock::class, 'id_movimiento_stock');
+            return $this->hasMany(MovimientoStock::class, 'id_compra');
         }
     
 

@@ -21,8 +21,9 @@ class Producto extends Model
         'stock_actual',
         'stock_minimo',
         'fecha_vencimiento',
-        'categoria_id',
-        'proveedor_id'
+        'estado',
+        'id_categoria',
+        'id_proveedor'
     ];
 
     public function categoria()
@@ -35,29 +36,24 @@ class Producto extends Model
         return $this->belongsTo(Proveedor::class, 'id_proveedor');
     }
 
-    public function alerta()
-    {
-        return $this->hasMany(Alerta::class, 'id_alerta');
-    }
-
     public function detalleCompra()
     {
-        return $this->hasMany(DetalleCompra::class, 'id_detalle_compra');
+        return $this->hasMany(DetalleCompra::class, 'id_producto');
     }
 
 
     public function detalleVenta()
     {
-        return $this->hasMany(DetalleVenta::class, 'id_detalle_venta');
+        return $this->hasMany(DetalleVenta::class, 'id_producto');
     }
 
     public function movimientoStock()
     {
-        return $this->hasMany(MovimientoStock::class, 'id_movimiento_stock');
+        return $this->hasMany(MovimientoStock::class, 'id_producto');
     }
 
     public function Notificacion()
     {
-        return $this->hasMany(Notificacion::class, 'id_notificacion');
+        return $this->hasMany(Notificacion::class, 'id_producto');
     }
 }

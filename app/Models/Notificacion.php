@@ -16,7 +16,7 @@ class Notificacion extends Model
         'id_producto',
         'titulo',
         'mensaje',
-        'leida',
+        'leido',
         'fecha',
         'tipo_alerta'
     ];

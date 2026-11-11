@@ -18,9 +18,9 @@ class UsuarioRepository extends BaseRepository implements UsuarioInterface {
       return $this->model->where('nombre', $nombre)->orderBy('nombre', 'asc')->get();
     }
 
-    Public function findByCorreo(string $correo)
+    Public function findByEmail(string $correo)
     {
-        return $this->model->where('correo', $correo)->get();
+        return $this->model->where('email', $correo)->get();
     }
 
     public function findByPassword(string $password)

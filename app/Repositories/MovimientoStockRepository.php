@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repositories;
-use App\models\MovimientoStock;
+use App\Models\MovimientoStock;
 use App\Interfaces\MovimientoStockInterface;
 
 class MovimientoStockRepository extends BaseRepository implements MovimientoStockInterface
