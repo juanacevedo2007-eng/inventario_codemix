@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Acceso;
+use App\Models\Accesos;
 use Carbon\Carbon;
 use App\Interfaces\AccesoInterface;
 

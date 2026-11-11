@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categoria extends Model
 {
-    use HasFactory, softDelete;
+    use HasFactory, softDeletes;
     protected $table = 'categorias';
     protected $primaryKey = 'id_categoria';
     protected $fillable = [
@@ -19,7 +19,7 @@ class Categoria extends Model
 
     public function producto()
     {
-        return $this->hasMany(Categoria::class, 'id_producto');
+        return $this->hasMany(Categoria::class, 'id_categoria');
     }
     
 }

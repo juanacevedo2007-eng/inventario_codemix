@@ -10,7 +10,7 @@ class RecuperacionContraseña extends Model
 {
     use HasFactory, softDeletes;
     protected $table = 'recuperacion_contraseña';
-    protected $primaryKey = 'id_recuperacion';
+    protected $primaryKey = 'id_recuperacion_contraseña';
     protected $fillable = [
         'id_usuario',
         'codigo',
