@@ -7,17 +7,17 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("
-            CREATE VIEW view_detalles_compras AS
-            SELECT
-                dc.id_detalle_compra,
-                dc.id_compra,
-                dc.id_producto,
-                p.nombre AS nombre_producto,
-                dc.cantidad,
-                dc.precio_compra,
-                dc.subtotal
+        CREATE OR REPLACE VIEW view_detalles_compras AS
+           SELECT
+             dc.id_detalle_compra,
+             dc.id_compra,
+             dc.id_producto,
+             p.nombre AS nombre_producto,
+             dc.cantidad,
+             dc.precio_compra,
+             dc.subtotal
             FROM detalles_compra dc
-            INNER JOIN productos p ON dc.id_producto = p.id_producto
+            INNER JOIN productos p ON dc.id_producto = p.id_producto;
         ");
     }
 

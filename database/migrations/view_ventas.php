@@ -7,18 +7,18 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("
-            CREATE VIEW view_ventas AS
-            SELECT
-                v.id_venta,
-                v.nombre_factura,
-                v.descuento,
-                v.iva,
-                v.total,
-                v.estado,
-                v.id_usuario,
-                u.nombre AS nombre_usuario
-            FROM ventas v
-            LEFT JOIN usuarios u ON v.id_usuario = u.id_usuario
+        CREATE OR REPLACE VIEW view_ventas AS
+        SELECT
+          v.id_venta,
+          v.nombre_factura,
+          v.descuento,
+          v.iva,
+          v.total,
+          v.estado,
+          v.id_usuario,
+          u.nombre AS nombre_usuario
+        FROM ventas v
+        LEFT JOIN usuarios u ON v.id_usuario = u.id_usuario;
         ");
     }
 

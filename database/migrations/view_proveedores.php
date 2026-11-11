@@ -7,16 +7,16 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("
-            CREATE VIEW view_proveedores AS
-            SELECT
-                id_proveedor,
-                nombre_proveedor,
-                contacto,
-                telefono,
-                correo,
-                direccion,
-                estado
-            FROM proveedores
+          CREATE OR REPLACE VIEW view_proveedores AS
+          SELECT
+            id_proveedor,
+            nombre_proveedor,
+            contacto,
+            telefono,
+            correo,
+            direccion,
+            estado
+          FROM proveedores;
         ");
     }
 

@@ -7,14 +7,14 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("
-            CREATE VIEW view_dashboard_ventas_ultimos_7_dias AS
-            SELECT
-                DATE(created_at) AS fecha,
-                COUNT(*) AS cantidad_ventas,
-                SUM(total) AS total_ventas
+         CREATE OR REPLACE VIEW view_dashboard_ventas_ultimos_7_dias AS
+           SELECT
+             created_at::date AS fecha,
+             COUNT(*) AS cantidad_ventas,
+             SUM(total) AS total_ventas
             FROM ventas
-            WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY)
-            GROUP BY DATE(created_at)
+            WHERE created_at >= CURRENT_DATE - INTERVAL '6 days'
+            GROUP BY created_at::date;
         ");
     }
 

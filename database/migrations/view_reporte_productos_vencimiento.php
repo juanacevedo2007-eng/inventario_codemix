@@ -7,16 +7,16 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("
-            CREATE VIEW view_reporte_productos_vencimiento AS
-            SELECT
-                p.id_producto,
-                p.codigo,
-                p.nombre,
-                p.fecha_vencimiento,
-                p.stock_actual
-            FROM productos p
-            WHERE p.fecha_vencimiento IS NOT NULL
-            ORDER BY p.fecha_vencimiento ASC
+        CREATE OR REPLACE VIEW view_reporte_productos_vencimiento AS
+        SELECT
+          p.id_producto,
+          p.codigo,
+          p.nombre,
+          p.fecha_vencimiento,
+          p.stock_actual
+        FROM productos p
+        WHERE p.fecha_vencimiento IS NOT NULL
+        ORDER BY p.fecha_vencimiento ASC;
         ");
     }
 

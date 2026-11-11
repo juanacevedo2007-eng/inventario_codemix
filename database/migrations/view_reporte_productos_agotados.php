@@ -7,16 +7,16 @@ return new class extends Migration {
     public function up(): void
     {
         DB::statement("
-            CREATE VIEW view_reporte_productos_agotados AS
-            SELECT
-                p.id_producto,
-                p.codigo,
-                p.nombre,
-                c.nombre_categoria,
-                p.stock_actual
-            FROM productos p
-            LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
-            WHERE p.stock_actual = 0
+           CREATE OR REPLACE VIEW view_reporte_productos_agotados AS
+           SELECT
+              p.id_producto,
+              p.codigo,
+              p.nombre,
+              c.nombre_categoria,
+              p.stock_actual
+           FROM productos p
+           LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
+           WHERE p.stock_actual = 0;
         ");
     }
 
