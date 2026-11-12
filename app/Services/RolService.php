@@ -69,16 +69,5 @@ class RolService
         return $this->rolRepository->findByDescripcionRol($descripcion);
     }
 
-    private function validarDatosRol(array $data): void
-    {
-        if (isset($data['nombre_rol']) &&
-            trim($data['nombre_rol']) === '') {
-
-            throw ValidationException::withMessages([
-                'nombre_rol' => 'El nombre del rol no puede estar vacio.'
-            ]);
-        }
-    }
-
 }
 
