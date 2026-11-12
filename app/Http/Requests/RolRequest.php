@@ -24,6 +24,7 @@ class RolRequest extends FormRequest
                 'max:50',
                 Rule::unique('roles', 'nombre_rol')->ignore($rolId, 'id_rol'),
             ],
+
             'descripcion' => [
                 'nullable',
                 'string',
@@ -45,4 +46,3 @@ class RolRequest extends FormRequest
         ];
     }
 }
-```

@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Http\Requests;
@@ -23,14 +22,15 @@ class CategoriaRequest extends FormRequest
                 $isUpdate ? 'sometimes' : 'required',
                 'string',
                 'max:100',
-                Rule::unique('categorias', 'nombre_categoria')
-                    ->ignore($categoriaId, 'id_categoria'),
+                Rule::unique('categorias', 'nombre_categoria')->ignore($categoriaId, 'id_categoria'),
             ],
+
             'descripcion' => [
                 $isUpdate ? 'sometimes' : 'required',
                 'string',
                 'max:225',
             ],
+
             'estado' => [
                 $isUpdate ? 'sometimes' : 'required',
                 Rule::in(['Activo', 'Inactivo']),
@@ -54,5 +54,4 @@ class CategoriaRequest extends FormRequest
             'estado.in' => 'El estado debe ser Activo o Inactivo.',
         ];
     }
-}
-```
+}    
