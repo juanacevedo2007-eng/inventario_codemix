@@ -82,40 +82,6 @@ class CategoriaService
         return $this->categoriaRepository->findByEstado($estado);
     }
 
-    // Validar datos
-    private function validarDatosCategoria(array $data): void
-    {
-        if (isset($data['nombre_categoria']) &&
-            trim($data['nombre_categoria']) === '') {
 
-            throw ValidationException::withMessages([
-                'nombre_categoria' => 'El nombre no puede estar vacio.'
-            ]);
-        }
 
-        if (isset($data['estado']) &&
-            !in_array($data['estado'], ['Activo', 'Inactivo'], true)) {
-
-            throw ValidationException::withMessages([
-                'estado' => 'El estado debe ser Activo o Inactivo.'
-            ]);
-        }
-    }
-
-    // Validar nombre unico
-    private function validarNombreUnico(
-        string $nombreCategoria,
-        ?int $idExcluir = null
-    ): void {
-        $categorias = $this->categoriaRepository
-            ->findByNombreCategoria($nombreCategoria);
-
-        foreach ($categorias as $categoria) {
-            if ($categoria->id_categoria != $idExcluir) {
-                throw ValidationException::withMessages([
-                    'nombre_categoria' => 'Ya existe una categoria con ese nombre.'
-                ]);
-            }
-        }
-    }
 }

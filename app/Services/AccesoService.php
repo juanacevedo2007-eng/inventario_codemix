@@ -94,14 +94,4 @@ class AccesoService
         return $this->accesoRepository->findByEstado($estado);
     }
 
-    private function validarDatosAcceso(array $data): void
-    {
-        if (isset($data['estado']) &&
-            !in_array($data['estado'], ['Activo', 'Inactivo'], true)) {
-
-            throw ValidationException::withMessages([
-                'estado' => 'El estado no es valido.'
-            ]);
-        }
-    }
 }

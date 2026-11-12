@@ -79,25 +79,4 @@ class DetalleVentaService
         return $this->detalleVentaRepository->findBySubtotal($subtotal);
     }
 
-    private function validarDatosDetalle(array $data): void
-    {
-        if (isset($data['cantidad']) &&
-            (!filter_var($data['cantidad'], FILTER_VALIDATE_INT) ||
-            $data['cantidad'] <= 0)) {
-
-            throw ValidationException::withMessages([
-                'cantidad' => 'La cantidad debe ser un entero mayor que cero.'
-            ]);
-        }
-
-        foreach (['precio_unitario', 'subtotal'] as $campo) {
-            if (isset($data[$campo]) &&
-                (!is_numeric($data[$campo]) || $data[$campo] < 0)) {
-
-                throw ValidationException::withMessages([
-                    $campo => 'El valor no puede ser negativo.'
-                ]);
-            }
-        }
-    }
 }

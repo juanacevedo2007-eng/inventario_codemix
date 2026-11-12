@@ -74,14 +74,4 @@ class CompraService
         return $this->compraRepository->findByProveedor($id_proveedor);
     }
 
-    private function validarDatosCompra(array $data): void
-    {
-        if (isset($data['total']) &&
-            (!is_numeric($data['total']) || $data['total'] < 0)) {
-
-            throw ValidationException::withMessages([
-                'total' => 'El total de la compra no puede ser negativo.'
-            ]);
-        }
-    }
 }

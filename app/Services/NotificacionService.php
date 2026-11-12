@@ -90,30 +90,4 @@ class NotificacionService
         return $this->notificacionRepository->findByTipoAlerta($tipo_alerta);
     }
 
-    private function validarDatosNotificacion(array $data): void
-    {
-        foreach (['titulo', 'mensaje'] as $campo) {
-            if (isset($data[$campo]) && trim($data[$campo]) === '') {
-                throw ValidationException::withMessages([
-                    $campo => 'El campo no puede estar vacio.'
-                ]);
-            }
-        }
-
-        if (isset($data['leido']) && !is_bool($data['leido'])) {
-            throw ValidationException::withMessages([
-                'leido' => 'El campo leido debe ser verdadero o falso.'
-            ]);
-        }
-
-        if (isset($data['fecha'])) {
-            try {
-                Carbon::parse($data['fecha']);
-            } catch (\Exception $e) {
-                throw ValidationException::withMessages([
-                    'fecha' => 'La fecha no es valida.'
-                ]);
-            }
-        }
-    }
 }

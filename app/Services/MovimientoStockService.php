@@ -104,26 +104,5 @@ class MovimientoStockService
         return $this->movimientoStockRepository->findByMotivo($motivo);
     }
 
-    private function validarDatosMovimiento(array $data): void
-    {
-        if (isset($data['cantidad']) &&
-            (!filter_var($data['cantidad'], FILTER_VALIDATE_INT) ||
-            $data['cantidad'] <= 0)) {
 
-            throw ValidationException::withMessages([
-                'cantidad' => 'La cantidad debe ser un entero mayor que cero.'
-            ]);
-        }
-
-        foreach (['stock_antes', 'stock_despues'] as $campo) {
-            if (isset($data[$campo]) &&
-                (!filter_var($data[$campo], FILTER_VALIDATE_INT) ||
-                $data[$campo] < 0)) {
-
-                throw ValidationException::withMessages([
-                    $campo => 'El stock debe ser un entero igual o mayor que cero.'
-                ]);
-            }
-        }
-    }
 }

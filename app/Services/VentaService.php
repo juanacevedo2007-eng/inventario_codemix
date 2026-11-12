@@ -84,24 +84,5 @@ class VentaService
         return $this->ventaRepository->findByIdUsuario($id_usuario);
     }
 
-    private function validarDatosVenta(array $data): void
-    {
-        if (isset($data['nombre_factura']) &&
-            trim($data['nombre_factura']) === '') {
 
-            throw ValidationException::withMessages([
-                'nombre_factura' => 'El nombre de la factura no puede estar vacio.'
-            ]);
-        }
-
-        foreach (['descuento', 'iva', 'total'] as $campo) {
-            if (isset($data[$campo]) &&
-                (!is_numeric($data[$campo]) || $data[$campo] < 0)) {
-
-                throw ValidationException::withMessages([
-                    $campo => 'El valor no puede ser negativo.'
-                ]);
-            }
-        }
-    }
 }

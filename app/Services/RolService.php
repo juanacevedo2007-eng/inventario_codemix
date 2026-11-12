@@ -80,19 +80,5 @@ class RolService
         }
     }
 
-    private function validarNombreUnico(
-        string $nombreRol,
-        ?int $idExcluir = null
-    ): void {
-        $roles = $this->rolRepository->findByNombreRol($nombreRol);
-
-        foreach ($roles as $rol) {
-            if ($rol->id_rol != $idExcluir) {
-                throw ValidationException::withMessages([
-                    'nombre_rol' => 'Ya existe un rol con ese nombre.'
-                ]);
-            }
-        }
-    }
 }
 

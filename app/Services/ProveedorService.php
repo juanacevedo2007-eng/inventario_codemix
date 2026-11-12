@@ -84,34 +84,5 @@ class ProveedorService
         return $this->proveedorRepository->findByEstado($estado);
     }
 
-    private function validarDatosProveedor(array $data): void
-    {
-        foreach (
-            ['nombre_proveedor', 'contacto', 'correo', 'telefono', 'direccion']
-            as $campo
-        ) {
-            if (isset($data[$campo]) && trim($data[$campo]) === '') {
-                throw ValidationException::withMessages([
-                    $campo => 'El campo no puede estar vacio.'
-                ]);
-            }
-        }
-
-        if (isset($data['correo']) &&
-            !filter_var($data['correo'], FILTER_VALIDATE_EMAIL)) {
-
-            throw ValidationException::withMessages([
-                'correo' => 'El correo electronico no es valido.'
-            ]);
-        }
-
-        if (isset($data['estado']) &&
-            !in_array($data['estado'], ['Activo', 'Inactivo'], true)) {
-
-            throw ValidationException::withMessages([
-                'estado' => 'El estado debe ser Activo o Inactivo.'
-            ]);
-        }
-    }
 }
 
