@@ -11,7 +11,7 @@ use App\Http\Controllers\MovimientosStockController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\RecuperacionContraseñaController;
+use App\Http\Controllers\RecuperacionContrasenaController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VentaController;
