@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Interfaces\AccesoInterface;
 
 class  AccesoRepository extends BaseRepository implements AccesoInterface {  
-    public function __construct(Acceso $acceso)
+    public function __construct(Accesos $acceso)
     {
         parent::__construct($acceso);
     }
