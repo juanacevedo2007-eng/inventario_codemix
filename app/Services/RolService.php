@@ -34,8 +34,6 @@ class RolService
 
     public function create(array $data)
     {
-        $this->validarDatosRol($data);
-        $this->validarNombreUnico($data['nombre_rol']);
 
         return $this->rolRepository->create($data);
     }
@@ -43,12 +41,7 @@ class RolService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosRol($data);
-
-        if (isset($data['nombre_rol'])) {
-            $this->validarNombreUnico($data['nombre_rol'], $id);
-        }
-
+        
         return $this->rolRepository->update($id, $data);
     }
 

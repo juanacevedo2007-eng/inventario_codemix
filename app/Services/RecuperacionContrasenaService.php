@@ -6,7 +6,7 @@ use App\Interfaces\RecuperacionContrasenaInterface;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
-class RecuperacionContraseñaService
+class RecuperacionContrasenaService
 {
     protected RecuperacionContrasenaInterface $recuperacionRepository;
 

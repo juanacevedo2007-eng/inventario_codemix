@@ -4,9 +4,9 @@ use App\Models\RecuperacionContrasena;
 use App\Interfaces\RecuperacionContrasenaInterface;
 use Carbon\Carbon;
 
-class RecuperacionContrasenaRepository extends BaseRepository implements RecuperacionContraseñaInterface
+class RecuperacionContrasenaRepository extends BaseRepository implements RecuperacionContrasenaInterface
 {
-    public function __construct(RecuperacionContraseña $recuperacionContraseña)
+    public function __construct(RecuperacionContrasena $recuperacionContraseña)
     {
         parent::__construct($recuperacionContraseña);
     }

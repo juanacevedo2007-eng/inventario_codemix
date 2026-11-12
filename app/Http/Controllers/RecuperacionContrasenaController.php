@@ -25,7 +25,7 @@ class RecuperacionContrasenaController extends Controller
     }
 
     // Crear un registro de recuperación
-    public function store(RecuperacionContraseñaRequest $request)
+    public function store(RecuperacionContrasenaRequest $request)
     {
         $registro = $this->recuperacionService->create(
             $request->validated()
@@ -50,7 +50,7 @@ class RecuperacionContrasenaController extends Controller
 
     // Actualizar un registro
     public function update(
-        RecuperacionContraseñaRequest $request,
+        RecuperacionContrasenaRequest $request,
         string $id
     ) {
         $registroActualizado = $this->recuperacionService->update(

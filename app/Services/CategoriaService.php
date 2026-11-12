@@ -37,8 +37,7 @@ class CategoriaService
     // Registrar categoria
     public function create(array $data)
     {
-        $this->validarDatosCategoria($data);
-        $this->validarNombreUnico($data['nombre_categoria']);
+
 
         return $this->categoriaRepository->create($data);
     }
@@ -47,11 +46,6 @@ class CategoriaService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosCategoria($data);
-
-        if (isset($data['nombre_categoria'])) {
-            $this->validarNombreUnico($data['nombre_categoria'], $id);
-        }
 
         return $this->categoriaRepository->update($id, $data);
     }
