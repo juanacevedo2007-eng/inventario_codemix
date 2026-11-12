@@ -2,16 +2,16 @@
 
 namespace App\Services;
 
-use App\Interfaces\RecuperacionContraseñaInterface;
+use App\Interfaces\RecuperacionContrasenaInterface;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
 class RecuperacionContraseñaService
 {
-    protected RecuperacionContraseñaInterface $recuperacionRepository;
+    protected RecuperacionContrasenaInterface $recuperacionRepository;
 
     public function __construct(
-        RecuperacionContraseñaInterface $recuperacionRepository
+        RecuperacionContrasenaInterface $recuperacionRepository
     ) {
         $this->recuperacionRepository = $recuperacionRepository;
     }

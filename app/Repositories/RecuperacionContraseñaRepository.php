@@ -1,10 +1,10 @@
 <?php
 namespace App\Repositories;
-use App\Models\RecuperacionContraseña;
-use App\Interfaces\RecuperacionContraseñaInterface;
+use App\Models\RecuperacionContrasena;
+use App\Interfaces\RecuperacionContrasenaInterface;
 use Carbon\Carbon;
 
-class RecuperacionContraseñaRepository extends BaseRepository implements RecuperacionContraseñaInterface
+class RecuperacionContrasenaRepository extends BaseRepository implements RecuperacionContraseñaInterface
 {
     public function __construct(RecuperacionContraseña $recuperacionContraseña)
     {

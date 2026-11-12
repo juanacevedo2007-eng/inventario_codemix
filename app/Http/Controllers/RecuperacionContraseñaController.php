@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\RecuperacionContraseñaService;
-use App\Http\Requests\RecuperacionContraseñaRequest;
+use App\Services\RecuperacionContrasenaService;
+use App\Http\Requests\RecuperacionContrasenaRequest;
 use Carbon\Carbon;
 
-class RecuperacionContraseñaController extends Controller
+class RecuperacionContrasenaController extends Controller
 {
     public function __construct(
-        private RecuperacionContraseñaService $recuperacionService
+        private RecuperacionContrasenaService $recuperacionService
     ) {
     }
 

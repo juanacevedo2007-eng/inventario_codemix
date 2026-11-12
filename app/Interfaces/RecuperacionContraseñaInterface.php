@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use Carbon\Carbon;
 
-interface RecuperacionContraseñaInterface extends BaseInterface
+interface RecuperacionContrasenaInterface extends BaseInterface
 {
     public function findById(int $id_recuperacion_contraseña);
 
