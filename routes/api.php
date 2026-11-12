@@ -130,10 +130,10 @@ Route::prefix('proveedores/buscar')->group(function () {
 
 // RECUPERACIÓN DE CONTRASEÑA
 Route::prefix('recuperacion-contrasenas/buscar')->group(function () {
-    Route::get('/usuario/{id_usuario}', [RecuperacionContraseñaController::class, 'findByUsuario']);
-    Route::get('/codigo/{codigo}', [RecuperacionContraseñaController::class, 'findByCodigo']);
-    Route::get('/fecha-expiracion/{fechaExpiracion}', [RecuperacionContraseñaController::class, 'findByFechaExpiracion']);
-    Route::get('/usado/{usado}', [RecuperacionContraseñaController::class, 'findByUsado']);
+    Route::get('/usuario/{id_usuario}', [RecuperacionContrasenaController::class, 'findByUsuario']);
+    Route::get('/codigo/{codigo}', [RecuperacionContrasenaController::class, 'findByCodigo']);
+    Route::get('/fecha-expiracion/{fechaExpiracion}', [RecuperacionContrasenaController::class, 'findByFechaExpiracion']);
+    Route::get('/usado/{usado}', [RecuperacionContrasenaController::class, 'findByUsado']);
 });
 
 
@@ -181,7 +181,7 @@ Route::apiResource('movimientos-stock', MovimientosStockController::class);
 Route::apiResource('notificaciones', NotificacionesController::class);
 Route::apiResource('productos', ProductoController::class);
 Route::apiResource('proveedores', ProveedorController::class);
-Route::apiResource('recuperacion-contrasenas', RecuperacionContraseñaController::class);
+Route::apiResource('recuperacion-contrasenas', RecuperacionContrasenaController::class);
 Route::apiResource('roles', RolController::class);
 Route::apiResource('usuarios', UsuarioController::class);
 Route::apiResource('ventas', VentaController::class);

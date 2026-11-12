@@ -14,7 +14,7 @@ use App\Interfaces\MovimientoStockInterface;
 use App\Interfaces\NotificacionInterface;
 use App\Interfaces\ProductoInterface;
 use App\Interfaces\ProveedorInterface;
-use App\Interfaces\RecuperacionContraseñaInterface;
+use App\Interfaces\RecuperacionContrasenaInterface;
 use App\Interfaces\RolInterface;
 use App\Interfaces\UsuarioInterface;
 use App\Interfaces\VentaInterface;
@@ -29,7 +29,7 @@ use App\Repositories\MovimientoStockRepository;
 use App\Repositories\NotificacionRepository;
 use App\Repositories\ProductoRepository;
 use App\Repositories\ProveedorRepository;
-use App\Repositories\RecuperacionContraseñaRepository;
+use App\Repositories\RecuperacionContrasenaRepository;
 use App\Repositories\RolRepository;
 use App\Repositories\UsuarioRepository;
 use App\Repositories\VentaRepository;
@@ -95,8 +95,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Recuperación de contraseña
         $this->app->bind(
-            RecuperacionContraseñaInterface::class,
-            RecuperacionContraseñaRepository::class
+            RecuperacionContrasenaInterface::class,
+            RecuperacionContrasenaRepository::class
         );
 
         // Roles
