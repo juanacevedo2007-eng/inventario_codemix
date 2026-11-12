@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rol extends Models
 {
-    use HasFactory, softDeletes;
+    use HasFactory, SoftDeletes;
     protected $table = 'roles';
     protected $primaryKey = 'id_rol';
     protected $fillable = [
