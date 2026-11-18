@@ -36,25 +36,12 @@ class UsuarioService
     public function create(array $data)
     {
 
-
-        if (isset($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
-        }
-
         return $this->usuarioRepository->create($data);
     }
 
     public function update(int $id, array $data)
     {
         $this->getById($id);
-
-
-
-
-        if (isset($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
-        }
-
         return $this->usuarioRepository->update($id, $data);
     }
 

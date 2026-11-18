@@ -17,14 +17,6 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VentaController;
 
 
-/*
-|--------------------------------------------------------------------------
-| RUTAS PERSONALIZADAS
-|--------------------------------------------------------------------------
-| Se colocan antes de apiResource para evitar conflictos.
-*/
-
-
 // ACCESOS
 Route::prefix('accesos/buscar')->group(function () {
     Route::get('/usuario/{id_usuario}', [AccesosController::class, 'findByUsuario']);
@@ -163,13 +155,6 @@ Route::prefix('ventas/buscar')->group(function () {
     Route::get('/estado/{estado}', [VentaController::class, 'findByEstado']);
     Route::get('/usuario/{id_usuario}', [VentaController::class, 'findByIdUsuario']);
 });
-
-
-/*
-|--------------------------------------------------------------------------
-| RUTAS CRUD
-|--------------------------------------------------------------------------
-*/
 
 
 Route::apiResource('accesos', AccesosController::class);

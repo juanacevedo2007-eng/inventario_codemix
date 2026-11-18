@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable implements JWTSubject
 {
   use HasFactory, softDeletes;
   protected $table = 'usuarios';
@@ -21,6 +23,45 @@ class Usuario extends Model
     
   ];
 
+  protected $hidden = [
+    'password',
+    'remember_token'
+  ];
+
+  protected function cats(): array{
+      return[
+        'password' => 'hashed'
+      ];
+  }
+  public function getRolName(): ?String
+  {
+    return $this->rol?->nombre_rol;
+  }
+  public function getJWTIdentifier(): mixed
+  {
+    return $this->getkey();
+  }
+
+  public function getJWTCustomClaims(): array
+  {
+    return[
+      'rol' => $this->getRolName()
+    ];
+  }
+
+  public function getPermissions(): array{
+    return $this->rol?->permissions() ??[];
+  }
+  
+  public function hasPermission(string $permission): bool
+  {
+    return in_array($permission, $this->getPermissions(), true);
+  }
+
+  public function hasRol(string $rol): bool
+  {
+    return $this->getRolName() === $rol;
+  }
   public function rol()
   {
     return $this->belongsTo(Rol::class, 'id_rol');
