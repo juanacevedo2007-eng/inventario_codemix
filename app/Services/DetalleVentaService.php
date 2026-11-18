@@ -34,7 +34,6 @@ class DetalleVentaService
 
     public function create(array $data)
     {
-        $this->validarDatosDetalle($data);
 
         return $this->detalleVentaRepository->create($data);
     }
@@ -42,7 +41,6 @@ class DetalleVentaService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosDetalle($data);
 
         return $this->detalleVentaRepository->update($id, $data);
     }

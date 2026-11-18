@@ -35,7 +35,6 @@ class NotificacionService
 
     public function create(array $data)
     {
-        $this->validarDatosNotificacion($data);
 
         return $this->notificacionRepository->create($data);
     }
@@ -43,7 +42,6 @@ class NotificacionService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosNotificacion($data);
 
         return $this->notificacionRepository->update($id, $data);
     }

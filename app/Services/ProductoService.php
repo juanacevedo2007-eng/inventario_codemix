@@ -47,8 +47,6 @@ class ProductoService
     // Registrar un producto
     public function create(array $data)
     {
-        $this->validarDatosProducto($data);
-        $this->validarCodigoUnico($data['codigo']);
 
         return $this->productoRepository->create($data);
     }
@@ -57,8 +55,6 @@ class ProductoService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-
-        $this->validarDatosProducto($data);
 
         if (isset($data['codigo'])) {
             $this->validarCodigoUnico($data['codigo'], $id);

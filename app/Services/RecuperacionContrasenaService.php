@@ -36,7 +36,6 @@ class RecuperacionContrasenaService
 
     public function create(array $data)
     {
-        $this->validarDatosRecuperacion($data);
 
         return $this->recuperacionRepository->create($data);
     }
@@ -44,7 +43,6 @@ class RecuperacionContrasenaService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosRecuperacion($data);
 
         return $this->recuperacionRepository->update($id, $data);
     }

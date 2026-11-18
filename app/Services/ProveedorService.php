@@ -34,7 +34,7 @@ class ProveedorService
 
     public function create(array $data)
     {
-        $this->validarDatosProveedor($data);
+
 
         return $this->proveedorRepository->create($data);
     }
@@ -42,7 +42,7 @@ class ProveedorService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosProveedor($data);
+
 
         return $this->proveedorRepository->update($id, $data);
     }

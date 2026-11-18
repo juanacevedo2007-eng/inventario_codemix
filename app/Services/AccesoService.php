@@ -35,7 +35,6 @@ class AccesoService
 
     public function create(array $data)
     {
-        $this->validarDatosAcceso($data);
 
         return $this->accesoRepository->create($data);
     }
@@ -43,8 +42,6 @@ class AccesoService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosAcceso($data);
-
         return $this->accesoRepository->update($id, $data);
     }
 

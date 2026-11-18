@@ -35,8 +35,7 @@ class UsuarioService
 
     public function create(array $data)
     {
-        $this->validarDatosUsuario($data);
-        $this->validarEmailUnico($data['email']);
+
 
         if (isset($data['password'])) {
             $data['password'] = Hash::make($data['password']);
@@ -48,11 +47,9 @@ class UsuarioService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosUsuario($data);
 
-        if (isset($data['email'])) {
-            $this->validarEmailUnico($data['email'], $id);
-        }
+
+
 
         if (isset($data['password'])) {
             $data['password'] = Hash::make($data['password']);

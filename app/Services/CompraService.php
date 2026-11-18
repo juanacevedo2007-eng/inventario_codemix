@@ -34,7 +34,6 @@ class CompraService
 
     public function create(array $data)
     {
-        $this->validarDatosCompra($data);
 
         return $this->compraRepository->create($data);
     }
@@ -42,7 +41,6 @@ class CompraService
     public function update(int $id, array $data)
     {
         $this->getById($id);
-        $this->validarDatosCompra($data);
 
         return $this->compraRepository->update($id, $data);
     }
